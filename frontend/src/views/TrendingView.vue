@@ -1,13 +1,13 @@
 <script setup>
 import { ref, onMounted } from 'vue'
-import axios from 'axios'
+import api from '../api.js'
 import TrendingCard from '../components/TrendingCard.vue'
 
 const trending = ref([])
 const isLoading = ref(true)
 
 onMounted(async () => {
-  const res = await axios.get('http://localhost:3000/api/trending-coins')
+  const res = await api.get('/api/trending-coins')
   trending.value = res.data
   isLoading.value = false
 })

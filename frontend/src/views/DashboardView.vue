@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted, computed } from 'vue'
-import axios from 'axios'
+import api from '../api.js'
 import PriceChart from '../components/PriceChart.vue'
 
 const alerts = ref([])
@@ -9,7 +9,7 @@ const error = ref(null)
 
 onMounted(async () => {
   try {
-    const res = await axios.get('http://localhost:3000/api/crypto-alerts')
+    const res = await api.get('/api/crypto-alerts')
     alerts.value = res.data
   } catch (err) {
     error.value = 'Failed to load dashboard data'
